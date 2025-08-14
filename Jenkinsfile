@@ -18,9 +18,42 @@ pipeline{
                 sh 'npm install'
             }
         }
+        stage{
+            parallel{
+                stage('Dependency vulnerability check'){
+                    steps{
+                        sh 'npm audit --audit-level=critical'
+                    }
+                 }
+                stage('OWASP dependency check'){
+                    steps{
+                        sh '''
+                            echo 'Dummy stage'
+                            for((i=1; i<=10; i++))
+                            do
+                                echo "$i"
+                                sleep 1
+                            done
+                        '''
+                    }
+                }
+            }
+        }
         stage('Dependency vulnerability check'){
             steps{
                 sh 'npm audit --audit-level=critical'
+            }
+        }
+        stage('OWASP dependency check'){
+            steps{
+                sh '''
+                    echo 'Dummy stage'
+                    for((i=1; i<=10; i++))
+                    do
+                        echo "$i"
+                        sleep 1
+                    done
+                '''
             }
         }
         stage('Code Coverage'){
