@@ -1,8 +1,8 @@
 pipeline{
     agent any
-//     environments{
-//
-//     }
+    environment{
+        MONGO_DB="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+    }
     tools{
         nodejs 'nodejs-24-4-1'
     }
@@ -40,7 +40,10 @@ pipeline{
         }
         stage('npm test'){
             steps{
-                sh 'npm test'
+                withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                    sh 'npm test'
+                }
+
             }
         }
         stage('Code Coverage'){
