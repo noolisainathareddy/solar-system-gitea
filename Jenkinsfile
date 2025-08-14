@@ -8,7 +8,7 @@ pipeline{
     }
     stages{
         stage('Check node versions'){
-            options{ timestamp() }
+            options{ timestamps() }
             steps{
                 sh 'node --version'
                 sh 'npm --version'
