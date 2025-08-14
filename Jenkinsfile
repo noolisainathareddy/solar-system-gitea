@@ -10,5 +10,20 @@ pipeline{
                 sh 'npm --version'
             }
         }
+        stage('Install dependencies'){
+            steps{
+                sh 'npm install'
+            }
+        }
+        stage('Code Coverage'){
+            steps{
+                sh 'npm run coverage'
+            }
+        }
+        stage("Docker image"){
+            steps{
+                sh "docker build -t nooli/solar-system ."
+            }
+        }
     }
 }
