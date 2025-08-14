@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environments{
+
+    }
     tools{
         nodejs 'nodejs-24-4-1'
     }
@@ -13,6 +16,11 @@ pipeline{
         stage('Install dependencies'){
             steps{
                 sh 'npm install'
+            }
+        }
+        stage('Dependency vulnerability check'){
+            steps{
+                sh 'npm audit --audit-level=critical'
             }
         }
         stage('Code Coverage'){
