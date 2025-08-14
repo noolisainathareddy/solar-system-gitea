@@ -18,7 +18,7 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage{
+        stage('Dependency validation'){
             parallel{
                 stage('Dependency vulnerability check'){
                     steps{
