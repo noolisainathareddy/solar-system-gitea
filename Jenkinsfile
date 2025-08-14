@@ -8,7 +8,7 @@ pipeline{
     }
     stages{
         stage('Check node versions'){
-            options{timestamp()}
+            options{ timestamp() }
             steps{
                 sh 'node --version'
                 sh 'npm --version'
@@ -40,7 +40,7 @@ pipeline{
             }
         }
         stage('npm test'){
-            options{retry(2)}
+            options{ retry(2) }
             steps{
                 withCredentials([usernamePassword(credentialsId: 'mongo-db-credentials', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     sh 'npm test'
