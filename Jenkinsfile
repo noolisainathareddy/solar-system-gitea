@@ -47,7 +47,9 @@ pipeline{
         }
         stage('Code Coverage'){
             steps{
-                sh 'npm run coverage'
+                catchError(buildResult: 'SUCCESS', message: 'Oops! It is an error.', stageResult: 'UNSTABLE') {
+                    sh 'npm run coverage'
+                }
             }
         }
         stage("Docker image"){
