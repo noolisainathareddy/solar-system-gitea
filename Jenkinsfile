@@ -1,8 +1,8 @@
 pipeline{
     agent any
-    environments{
-
-    }
+//     environments{
+//
+//     }
     tools{
         nodejs 'nodejs-24-4-1'
     }
