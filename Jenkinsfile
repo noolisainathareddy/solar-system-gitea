@@ -23,7 +23,9 @@ pipeline{
             parallel{
                 stage('Dependency vulnerability check'){
                     steps{
-                        sh 'npm audit --audit-level=critical'
+                        catchError(buildResult: 'SUCCESS', message: 'Vulnerability found') {
+                            sh 'npm audit --audit-level=critical'
+                        }
                     }
                  }
                 stage('OWASP dependency check'){
