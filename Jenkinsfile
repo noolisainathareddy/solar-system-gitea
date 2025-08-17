@@ -44,7 +44,7 @@ pipeline{
         stage('npm test'){
             options{ retry(2) }
             steps{
-               sh 'npm test" '
+               sh 'npm test'
             }
         }
         stage('Code Coverage'){
