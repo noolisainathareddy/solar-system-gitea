@@ -42,7 +42,7 @@ pipeline{
         stage('npm test'){
             options{ retry(2) }
             steps{
-               sh 'echo "Testing completed" '
+               sh 'npm test" '
             }
         }
         stage('Code Coverage'){
