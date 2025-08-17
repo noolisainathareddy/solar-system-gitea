@@ -44,7 +44,10 @@ pipeline{
         stage('npm test'){
             options{ retry(2) }
             steps{
-               sh 'npm test'
+            withCredentials([usernamePassword(credentialsId: '', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                    sh 'npm test'
+                }
+
             }
         }
         stage('Code Coverage'){
