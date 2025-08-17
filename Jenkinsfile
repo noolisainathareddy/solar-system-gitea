@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        MONGO_DB="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+        MONGO_URI="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
     }
     tools{
         nodejs 'nodejs-24-4-1'
@@ -44,7 +44,7 @@ pipeline{
         stage('npm test'){
             options{ retry(2) }
             steps{
-            withCredentials([usernamePassword(credentialsId: 'Mongo Credentialss', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'Mongo Credentialss', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     sh 'npm test'
                 }
 
