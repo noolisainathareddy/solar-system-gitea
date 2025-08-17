@@ -44,7 +44,7 @@ pipeline{
         stage('npm test'){
             options{ retry(2) }
             steps{
-            withCredentials([usernamePassword(credentialsId: '', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: 'Mongo Credentialss', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
                     sh 'npm test'
                 }
 
