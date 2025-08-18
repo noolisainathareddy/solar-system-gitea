@@ -5,6 +5,7 @@ pipeline{
     }
     tools{
         nodejs 'nodejs-24-4-1'
+        sonarQubeScanner 'sonar-710'
     }
     stages{
         stage('Check node versions'){
