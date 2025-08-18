@@ -57,6 +57,17 @@ pipeline{
                 }
             }
         }
+        stage('SonarQube'){
+            steps{
+                sh '''
+                    sonar-scanner \
+                      -Dsonar.projectKey=soalr-system \
+                      -Dsonar.sources=. \
+                      -Dsonar.host.url=http://localhost:9000 \
+                      -Dsonar.login=sqp_7d4fc1424887b17ad4fc7f18a2093e4d01b19e69
+                '''
+            }
+        }
         stage("Docker image"){
             steps{
                 sh "docker build -t nooli/solar-system ."
