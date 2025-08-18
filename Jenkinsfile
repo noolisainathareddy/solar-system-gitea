@@ -2,10 +2,10 @@ pipeline{
     agent any
     environment{
         MONGO_URI="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
+        SONAR_QUBE_PATH= tool 'sonar-710'
     }
     tools{
         nodejs 'nodejs-24-4-1'
-        hudson.plugins.sonar.SonarRunnerInstallation 'sonar-710'
     }
     stages{
         stage('Check node versions'){
@@ -60,8 +60,9 @@ pipeline{
         }
         stage('SonarQube'){
             steps{
+                sh ' echo $SONAR_QUBE_PATH'
                 sh '''
-                    sonar-scanner \
+                    $SONAR_QUBE_PATH/bin/sonar-scanner \
                       -Dsonar.projectKey=soalr-system \
                       -Dsonar.sources=. \
                       -Dsonar.host.url=http://localhost:9000 \
