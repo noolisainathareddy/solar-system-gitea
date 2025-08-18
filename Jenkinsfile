@@ -66,6 +66,7 @@ pipeline{
                       -Dsonar.projectKey=soalr-system \
                       -Dsonar.sources=. \
                       -Dsonar.host.url=http://localhost:9000 \
+                      -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
                       -Dsonar.login=sqp_7d4fc1424887b17ad4fc7f18a2093e4d01b19e69
                 '''
             }
