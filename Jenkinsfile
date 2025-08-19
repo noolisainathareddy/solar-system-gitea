@@ -68,9 +68,8 @@ pipeline{
                           -Dsonar.sources=app.js \
                           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
                     '''
-                    waitForQualityGate abortPipeline: false
                 }
-
+                    waitForQualityGate abortPipeline: true
             }
         }
         stage("Docker image"){
