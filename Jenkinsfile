@@ -60,15 +60,17 @@ pipeline{
         }
         stage('SonarQube'){
             steps{
-                sh ' echo $SONAR_QUBE_PATH'
-                sh '''
-                    $SONAR_QUBE_PATH/bin/sonar-scanner \
-                      -Dsonar.projectKey=soalr-system \
-                      -Dsonar.sources=app.js \
-                      -Dsonar.host.url=http://localhost:9000 \
-                      -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-                      -Dsonar.login=sqp_7d4fc1424887b17ad4fc7f18a2093e4d01b19e69
-                '''
+                withSonarQubeEnv('sonar-qube-credentials'){
+                    sh ' echo $SONAR_QUBE_PATH'
+                        sh '''
+                            $SONAR_QUBE_PATH/bin/sonar-scanner \
+                              -Dsonar.projectKey=soalr-system \
+                              -Dsonar.sources=app.js \
+                              -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+
+                        '''
+                }
+
             }
         }
         stage("Docker image"){
