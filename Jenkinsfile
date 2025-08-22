@@ -77,6 +77,8 @@ pipeline{
         }
         stage("Docker image"){
             steps{
+                sh 'path $PATH'
+                sh 'docker --version'
                 sh "docker build -t nooli/solar-system ."
             }
         }
