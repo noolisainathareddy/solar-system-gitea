@@ -3,6 +3,7 @@ pipeline{
     environment{
         MONGO_URI="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
         SONAR_QUBE_PATH= tool 'sonar-710'
+        PATH="/Users/sainooli/.docker/bin/docker:${env.PATH}"
     }
     tools{
         nodejs 'nodejs-24-4-1'
