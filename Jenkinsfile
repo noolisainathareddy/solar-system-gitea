@@ -77,7 +77,6 @@ pipeline{
         stage("Docker image"){
             steps{
                 sh '''
-//                     export PATH="/Users/sainooli/.docker/bin/docker:$PATH"
                     export PATH=$PATH:/Users/sainooli/.docker/bin
                     which docker
                     docker --version
