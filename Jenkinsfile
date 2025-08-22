@@ -3,7 +3,6 @@ pipeline{
     environment{
         MONGO_URI="mongodb+srv://supercluster.d83jj.mongodb.net/superData"
         SONAR_QUBE_PATH= tool 'sonar-710'
-        PATH="/Users/sainooli/.docker/bin/docker:${env.PATH}"
     }
     tools{
         nodejs 'nodejs-24-4-1'
@@ -77,9 +76,11 @@ pipeline{
         }
         stage("Docker image"){
             steps{
-                sh 'path $PATH'
-                sh 'docker --version'
-                sh "docker build -t nooli/solar-system ."
+                sh '''
+                    export PATH="/Users/sainooli/.docker/bin/docker:${env.PATH}"
+                    docker --version
+                    docker build -t nooli/solar-system .
+                '''
             }
         }
     }
