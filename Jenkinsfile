@@ -77,7 +77,7 @@ pipeline{
         stage("Docker image"){
             steps{
                 sh '''
-                    export PATH="/Users/sainooli/.docker/bin/docker:${env.PATH}"
+                    export PATH="/Users/sainooli/.docker/bin/docker:$PATH"
                     docker --version
                     docker build -t nooli/solar-system .
                 '''
