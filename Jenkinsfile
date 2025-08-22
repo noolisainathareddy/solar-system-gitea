@@ -59,16 +59,16 @@ pipeline{
             }
         }
         stage('SonarQube'){
-            steps{}
+            steps{
                 catchError(buildResult: 'SUCCESS', message: 'OOps', stageResult: 'UNSTABLE') {
                      withSonarQubeEnv('sonar-qube-credentials'){
-                                         sh ' echo $SONAR_QUBE_PATH'
-                                         sh '''
-                                             $SONAR_QUBE_PATH/bin/sonar-scanner \
-                                               -Dsonar.projectKey=soalr-system \
-                                               -Dsonar.sources=app.js \
-                                               -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-                                         '''
+                         sh ' echo $SONAR_QUBE_PATH'
+                         sh '''
+                             $SONAR_QUBE_PATH/bin/sonar-scanner \
+                               -Dsonar.projectKey=soalr-system \
+                               -Dsonar.sources=app.js \
+                               -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+                         '''
                      }
                      waitForQualityGate abortPipeline: true
                 }
