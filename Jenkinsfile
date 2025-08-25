@@ -77,12 +77,14 @@ pipeline{
         }
         stage("Docker image"){
             steps{
+                script{
+                    def datePart = sh(script: "date +%y.%m", returnStdout: true).trim()
+                    env.RELEASE_NUMBER = "${datePart}.${BUILD_NUMBER}"
+                }
                 sh '''
                     echo $PATH
                     which docker
                     docker --version
-                    def datePart = sh(script: "date +%y.%m", returnStdout: true).trim()
-                    env.RELEASE_NUMBER = "${datePart}.${BUILD_NUMBER}"
                     docker build -t nooli/solar-system:${RELEASE_NUMBER} .
                 '''
             }
