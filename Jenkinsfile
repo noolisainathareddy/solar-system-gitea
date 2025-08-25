@@ -84,5 +84,10 @@ pipeline{
                 '''
             }
         }
+        stage('push to hub'){
+            steps{
+                sh 'docker push nooli/solar-system:${BUILD_NUMBER}'
+            }
+        }
     }
 }
