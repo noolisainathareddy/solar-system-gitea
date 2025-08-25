@@ -88,8 +88,12 @@ pipeline{
         stage('push to hub'){
             steps{
                 script{
-                    RELEASE_NUMBER = date + "%y.%m"
-                    docker push nooli/solar-system:${RELEASE_NUMBER}.${BUILD_NUMBER}
+
+                       def datePart = sh(script: "date +%y.%m", returnStdout: true).trim()
+
+                       def RELEASE_NUMBER = "${datePart}.${BUILD_NUMBER}"
+
+                       sh "docker push nooli/solar-system:${RELEASE_NUMBER}"
                 }
             }
         }
