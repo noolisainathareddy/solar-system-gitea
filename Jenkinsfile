@@ -87,7 +87,10 @@ pipeline{
         }
         stage('push to hub'){
             steps{
-                sh 'docker push nooli/solar-system:${BUILD_NUMBER}'
+                script{
+                    RELEASE_NUMBER = date + "%y.%m"
+                    docker push nooli/solar-system:${RELEASE_NUMBER}.${BUILD_NUMBER}
+                }
             }
         }
     }
