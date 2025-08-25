@@ -81,19 +81,16 @@ pipeline{
                     echo $PATH
                     which docker
                     docker --version
-                    docker build -t nooli/solar-system:${BUILD_NUMBER} .
+                    def datePart = sh(script: "date +%y.%m", returnStdout: true).trim()
+                    env.RELEASE_NUMBER = "${datePart}.${BUILD_NUMBER}"
+                    docker build -t nooli/solar-system:${RELEASE_NUMBER} .
                 '''
             }
         }
         stage('push to hub'){
             steps{
                 script{
-
-                       def datePart = sh(script: "date +%y.%m", returnStdout: true).trim()
-
-                       def RELEASE_NUMBER = "${datePart}.${BUILD_NUMBER}"
-
-                       sh "docker push nooli/solar-system:${RELEASE_NUMBER}"
+                   sh "docker push nooli/solar-system:${RELEASE_NUMBER}"
                 }
             }
         }
