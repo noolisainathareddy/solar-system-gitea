@@ -80,7 +80,7 @@ pipeline{
                     export PATH=$PATH:/Users/sainooli/.docker/bin
                     which docker
                     docker --version
-                    docker build -t nooli/solar-system:${GIT_COMMIT} .
+                    docker build -t nooli/solar-system:${BUILD_NUMBER} .
                 '''
             }
         }
