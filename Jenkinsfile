@@ -96,5 +96,13 @@ pipeline{
                 }
             }
         }
+        stage('pull docker image'){
+            steps{
+                sshagent(['sai-aws']) {
+                    sh 'docker pull nooli/solar-system:${RELEASE_NUMBER}'
+                }
+            }
+
+        }
     }
 }
