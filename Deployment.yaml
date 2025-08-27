@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: solar-system
+  labels:
+    app: solar-system-app
+spec:
+  containers:
+    - name: solar-system
+      image: nooli/solar-system:25.08.59
+      ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: solar-system-service
+  labels:
+    app: solar-system-app
+spec:
+  type: NodePort
+  selector:
+    name: solar-system
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30020
