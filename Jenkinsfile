@@ -96,5 +96,19 @@ pipeline{
                 }
             }
         }
+        stage('update image in kube repo'){
+            steps{
+                sh 'git clone git@github.com:noolisainathareddy/Basic-Python-App.git'
+                dir('Basic-Python-App/kubernetes'){
+                    sh '''
+                        git checkout main
+                        sed -i "s|nooli/solar-system:[^[:space:]]*|nooli/solar-system:${RELEASE_NUMBER}|g"
+                        git add deployment.yaml
+                        git commit -m "updated image name"
+                        git push
+                    '''
+                    }
+            }
+        }
     }
 }
