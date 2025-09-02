@@ -27,6 +27,9 @@ pipeline{
                     withAWS(profile: 'aws-kube', region: 'us-east-1') {
                         sh 'aws --version'
                         sh 'aws s3 ls'
+                        dir('/Users/sainooli/.jenkins/workspace/solar'){
+                            sh 'aws s3 cp test-results.xml s3://sainathchottu-test-bucket/'
+                        }
                     }
 
             }
