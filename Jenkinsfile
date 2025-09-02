@@ -12,6 +12,7 @@ pipeline{
                 dir('solar-system-gitea'){
                     sh 'ls'
                     sh 'pwd'
+                    sh 'apt install nodejs'
                 }
             }
         }
