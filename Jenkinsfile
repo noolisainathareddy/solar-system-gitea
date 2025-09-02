@@ -103,7 +103,7 @@ pipeline{
                     sh '''
                         git checkout main
                         uname -a
-                        sed -i 's|nooli/solar-system:[^[:space:]]*|nooli/solar-system:${RELEASE_NUMBER}|g' deployment.yaml
+                        sed -i '' 's|nooli/solar-system:[^[:space:]]*|nooli/solar-system:${RELEASE_NUMBER}|g' deployment.yaml
                         git add deployment.yaml
                         git commit -m "updated image name"
                         git push
