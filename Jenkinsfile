@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    tool {
+    tools {
         node 'nodejs21'
     }
     stages {
