@@ -9,6 +9,7 @@ pipeline{
                 dir('solar-system-gitea'){
                     sh 'ls'
                     sh 'pwd'
+                    sh 'ls -ltra'
                 }
             }
         }
