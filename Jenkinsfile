@@ -18,5 +18,13 @@ pipeline{
                 sh 'npm test'
             }
         }
+        stage('list s3') {
+            steps{
+                echo $PATH
+                withAWS(profile: 'aws-kube', region: 'us-east-1') {
+                    sh 'aws s3 ls'
+                }
+            }
+        }
     }
 }
