@@ -7,8 +7,8 @@ pipeline{
         stage('first') {
             steps{
                 dir('solar-system-gitea'){
-                    sh 'ls'
-                    sh 'pwd'
+                    sh 'npm --version'
+                    sh 'node --version'
                 }
             }
         }
