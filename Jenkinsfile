@@ -114,7 +114,11 @@ pipeline{
     }
     post{
         always{
-            cleanWs()
+             script{
+                if(fileExists('Basic-Python-App')){
+                    sh 'rm -rf Basic-Python-App'
+                }
+             }
         }
     }
 }
