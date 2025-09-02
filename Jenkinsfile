@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        PATH="${env.PATH}:/usr/local/bin/aws"
+        PATH="${env.PATH}:/usr/local/bin"
     }
     tools {
         nodejs 'nodejs-24-4-1'
