@@ -23,7 +23,7 @@ mongoose.connect('mongodb+srv://supercluster.d83jj.mongodb.net/superData', {
     useUnifiedTopology: true
 }, function(err) {
     if (err) {
-        console.log("error!! " + err)
+        console.log("error occured!! " + err)
     } else {
       //  console.log("MongoDB Connection Successful")
     }
