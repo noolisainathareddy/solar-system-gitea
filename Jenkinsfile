@@ -6,7 +6,7 @@ pipeline{
     stages {
         stage('first stage') {
             steps{
-                echo "Starting"
+                echo "this is first stage"
                 sh 'sudo apt install nodejs'
                 sh 'sudo apt install npm'
             }
