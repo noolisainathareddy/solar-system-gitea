@@ -1,7 +1,7 @@
 pipeline{
     agent any
-    environment {
-        PATH=/usr/local/bin:$PATH
+    environment{
+        PATH="${env.PATH}:/usr/local/bin/aws"
     }
     tools {
         nodejs 'nodejs-24-4-1'
@@ -24,7 +24,6 @@ pipeline{
         stage('list s3') {
             steps{
                 sh 'echo $PATH'
-
                     withAWS(profile: 'aws-kube', region: 'us-east-1') {
                         sh 'aws --version'
                         sh 'aws s3 ls'
