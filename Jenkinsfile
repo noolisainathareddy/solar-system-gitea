@@ -9,8 +9,10 @@ pipeline{
     stages {
         stage('first') {
             steps{
-                sh 'sudo apt install nodejs'
-                sh 'sudo apt install npm'
+                dir('solar-system-gitea'){
+                    sh 'ls'
+                    sh 'pwd'
+                }
             }
         }
     }
