@@ -4,7 +4,7 @@ pipeline{
         nodejs 'nodejs21'
     }
     stages {
-        stage('first stage') {
+        stage('first') {
             steps{
                 echo "first stage running"
                 sh 'sudo apt install nodejs'
