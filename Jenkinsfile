@@ -102,7 +102,7 @@ pipeline{
                 dir('Basic-Python-App/kubernetes'){
                     sh '''
                         git checkout main
-                        sed -i "s|nooli/solar-system:[^[:space:]]*|nooli/solar-system:${RELEASE_NUMBER}|g"
+                        sed -i "s|nooli/solar-system:[^[:space:]]*|nooli/solar-system:${RELEASE_NUMBER}|g" deployment.yaml
                         git add deployment.yaml
                         git commit -m "updated image name"
                         git push
