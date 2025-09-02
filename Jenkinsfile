@@ -7,6 +7,7 @@ pipeline{
         stage('first stage') {
             steps{
                 sh 'sudo apt install nodejs'
+                sh 'sudo apt install npm'
             }
         }
     }
