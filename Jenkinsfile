@@ -34,11 +34,11 @@ pipeline{
 
             }
         }
-        post {
-            always {
-                slackSend channel: '#testkit-ai-dev', message: "Successful"
-            }
 
+    }
+    post {
+        always {
+            slackSend channel: '#testkit-ai-dev', message: "Successful"
         }
     }
 }
